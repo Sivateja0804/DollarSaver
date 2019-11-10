@@ -21,39 +21,54 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_page)
+//        setContentView(R.layout.home_page)
+        setContentView(R.layout.login_page)
 
-        mDrawerLayout=findViewById<View>(R.id.drawerLayout) as DrawerLayout
-        mNavigationView=findViewById<View>(R.id.navView) as NavigationView
+        val login_button = findViewById<View>(R.id.login)
 
-        mFragmentManager= supportFragmentManager
-        mFragmentTransaction= mFragmentManager.beginTransaction()
-        mFragmentTransaction.replace(R.id.containerView, TabFragment()).commit()
+        login_button.setOnClickListener{
+//            counter++
+//            textView.text = "Click counter : $counter"
+            setContentView(R.layout.home_page)
 
-        mNavigationView.setNavigationItemSelectedListener {
-            menuItem ->  mDrawerLayout.closeDrawers()
-            if (menuItem.itemId==R.id.nav_item_home){
-                val ft= mFragmentManager.beginTransaction()
-                ft.replace(R.id.containerView, TabFragment()).commit()
-            }
+            mDrawerLayout=findViewById<View>(R.id.drawerLayout) as DrawerLayout
+            mNavigationView=findViewById<View>(R.id.navView) as NavigationView
 
-            if (menuItem.itemId==R.id.nav_item_profile){
-                val ft= mFragmentManager.beginTransaction()
-                ft.replace(R.id.containerView, ProfileFragment()).commit()
-            }
-            if (menuItem.itemId==R.id.nav_item_account_balance){
-                val ft= mFragmentManager.beginTransaction()
-                ft.replace(R.id.containerView, AccountBalanceFragment()).commit()
-            }
-            if (menuItem.itemId==R.id.nav_item_logout){
-                val ft= mFragmentManager.beginTransaction()
-                ft.replace(R.id.containerView, HomeFragment()).commit() //need to logout
-            }
+            mFragmentManager= supportFragmentManager
+            mFragmentTransaction= mFragmentManager.beginTransaction()
+            mFragmentTransaction.replace(R.id.containerView, TabFragment()).commit()
+
+            mNavigationView.setNavigationItemSelectedListener {
+                    menuItem ->  mDrawerLayout.closeDrawers()
+                if (menuItem.itemId==R.id.nav_item_home){
+                    val ft= mFragmentManager.beginTransaction()
+                    ft.replace(R.id.containerView, TabFragment()).commit()
+                }
+
+                if (menuItem.itemId==R.id.nav_item_profile){
+                    val ft= mFragmentManager.beginTransaction()
+                    ft.replace(R.id.containerView, ProfileFragment()).commit()
+                }
+                if (menuItem.itemId==R.id.nav_item_account_balance){
+                    val ft= mFragmentManager.beginTransaction()
+                    ft.replace(R.id.containerView, AccountBalanceFragment()).commit()
+                }
+                if (menuItem.itemId==R.id.nav_item_logout){
+                    val ft= mFragmentManager.beginTransaction()
+                    ft.replace(R.id.containerView, HomeFragment()).commit() //need to logout
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0, 0);
+
+                }
                 false
+            }
+            val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+            val mDrawerToggle = ActionBarDrawerToggle(this,mDrawerLayout, toolbar,R.string.app_name,R.string.app_name)
+            mDrawerLayout.setDrawerListener(mDrawerToggle)
+            mDrawerToggle.syncState()
         }
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        val mDrawerToggle = ActionBarDrawerToggle(this,mDrawerLayout, toolbar,R.string.app_name,R.string.app_name)
-        mDrawerLayout.setDrawerListener(mDrawerToggle)
-        mDrawerToggle.syncState()
+
     }
 }
