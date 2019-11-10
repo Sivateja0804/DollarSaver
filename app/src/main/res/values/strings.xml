@@ -5,4 +5,15 @@
     <string name="password">Password</string>
     <string name="singup">SignUp</string>
     <string name="forgot_password">Forgot Password</string>
+
+    <string-array name="category_list">
+        <item>Food</item>
+        <item>Rent</item>
+        <item>Transport</item>
+        <item>Entertainment</item>
+        <item>Stationery</item>
+        <item>Utilities</item>
+        <item>Miscellaneous</item>
+
+    </string-array>
 </resources>

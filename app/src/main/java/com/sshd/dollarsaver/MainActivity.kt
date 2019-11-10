@@ -11,8 +11,6 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 
 
-
-
 class MainActivity : AppCompatActivity() {
 
     lateinit var mDrawerLayout: DrawerLayout
