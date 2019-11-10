@@ -21,14 +21,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.home_page)
-        setContentView(R.layout.login_page)
+       setContentView(R.layout.home_page)
 
         val login_button = findViewById<View>(R.id.login)
 
         login_button.setOnClickListener{
-//            counter++
-//            textView.text = "Click counter : $counter"
+
             setContentView(R.layout.home_page)
 
             mDrawerLayout=findViewById<View>(R.id.drawerLayout) as DrawerLayout
