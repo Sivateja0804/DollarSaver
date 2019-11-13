@@ -1,5 +1,6 @@
 package com.sshd.dollarsaver
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -9,6 +10,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
+import com.sshd.dollarsaver.Activities.Login
+import com.sshd.dollarsaver.Activities.RegisterPage
 
 
 class MainPage : AppCompatActivity() {
@@ -48,9 +51,11 @@ class MainPage : AppCompatActivity() {
             if (menuItem.itemId==R.id.nav_item_logout){
                 val ft= mFragmentManager.beginTransaction()
                 ft.replace(R.id.containerView, HomeFragment()).commit() //need to logout
+
+                val intent = Intent(this, Login::class.java)
                 finish();
                 overridePendingTransition(0, 0);
-                startActivity(getIntent());
+                startActivity(intent);
                 overridePendingTransition(0, 0);
 
             }
