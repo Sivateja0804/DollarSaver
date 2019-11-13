@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.RegisterPage"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainPage"/>
         <activity android:name=".Activities.AddExpense"/>
     </application>
 
