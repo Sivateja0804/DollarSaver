@@ -24,12 +24,9 @@
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textColor="@color/colorInput"
-            android:textSize="22sp"
-            android:background="@drawable/textbox_back"
-            android:entries="@array/category_list" />
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+           />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -118,11 +115,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Market"
+            android:textColorHint="@color/colorHint"
+            android:textColor="@color/colorInput"
+            android:textSize="30sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            />
+        <Spinner
+            android:id="@+id/market_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
             android:layout_width="190dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:textSize="22sp"
             android:id="@+id/add_expense"
@@ -131,8 +150,8 @@
             android:textColor="@color/colorInput"/>
         <Button
             android:layout_width="190dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:textSize="22sp"
             android:id="@+id/submit"

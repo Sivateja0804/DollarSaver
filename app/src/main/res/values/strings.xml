@@ -7,13 +7,23 @@
     <string name="forgot_password">Forgot Password</string>
 
     <string-array name="category_list">
-        <item>Food</item>
-        <item>Rent</item>
-        <item>Transport</item>
-        <item>Entertainment</item>
-        <item>Stationery</item>
-        <item>Utilities</item>
-        <item>Miscellaneous</item>
-
+    <item>Food</item>
+    <item>Rent</item>
+    <item>Transport</item>
+    <item>Entertainment</item>
+    <item>Stationery</item>
+    <item>Utilities</item>
+    <item>Miscellaneous</item>
     </string-array>
+
+    <string-array name="market_list">
+        <item>Costco</item>
+        <item>Walmart</item>
+        <item>Trader Joes</item>
+        <item>WholeFoods</item>
+        <item>7Eleven</item>
+        <item>CVS</item>
+    </string-array>
+
+
 </resources>
