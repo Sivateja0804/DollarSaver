@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "957720741221",
+    "firebase_url": "https://dollarsaver-a4fd4.firebaseio.com",
+    "project_id": "dollarsaver-a4fd4",
+    "storage_bucket": "dollarsaver-a4fd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957720741221:android:9e44315d1ddd962b870d8c",
+        "android_client_info": {
+          "package_name": "com.sshd.dollarsaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957720741221-0lh9vssfbri8lm5nsvt7n92eu3h7oc1c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpqKyE9iQfIVCrB454TouOxujhJDay3pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957720741221-0lh9vssfbri8lm5nsvt7n92eu3h7oc1c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+
