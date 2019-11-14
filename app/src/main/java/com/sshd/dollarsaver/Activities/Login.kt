@@ -3,6 +3,7 @@ package com.sshd.dollarsaver.Activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.sshd.dollarsaver.MainPage
 import com.sshd.dollarsaver.R
@@ -21,19 +22,25 @@ class Login : AppCompatActivity() {
         val login_button = findViewById<View>(R.id.login)
         login_button.setOnClickListener {
             //start data base code
-            auth.signInWithEmailAndPassword(username.text.toString(), password.text.toString())
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(this, "Login succesful", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, MainPage::class.java)
-                        startActivity(intent)
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Toast.makeText(baseContext, "Login failed", Toast.LENGTH_SHORT).show()
+            val username=findViewById<View>(R.id.username) as EditText
+            val password=findViewById<View>(R.id.password) as EditText
+            if (username.text.toString()!="" && password.text.toString()!="") {
+                auth.signInWithEmailAndPassword(username.text.toString(), password.text.toString())
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(this, "Login succesful", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, MainPage::class.java)
+                            startActivity(intent)
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(baseContext, "Login failed", Toast.LENGTH_SHORT).show()
 
+                        }
                     }
-                }
+            }else{
+                Toast.makeText(baseContext, "Enter correct username and password", Toast.LENGTH_SHORT).show()
+            }
         }
 
         //register button listner
