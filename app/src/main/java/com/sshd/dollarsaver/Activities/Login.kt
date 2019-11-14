@@ -21,7 +21,6 @@ class Login : AppCompatActivity() {
         //login button listner
         val login_button = findViewById<View>(R.id.login)
         login_button.setOnClickListener {
-            //start data base code
             val username=findViewById<View>(R.id.username) as EditText
             val password=findViewById<View>(R.id.password) as EditText
             if (username.text.toString()!="" && password.text.toString()!="") {

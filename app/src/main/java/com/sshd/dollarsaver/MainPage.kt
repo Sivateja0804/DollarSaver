@@ -50,14 +50,8 @@ class MainPage : AppCompatActivity() {
             }
             if (menuItem.itemId==R.id.nav_item_logout){
                 val ft= mFragmentManager.beginTransaction()
-                ft.replace(R.id.containerView, HomeFragment()).commit() //need to logout
-
-                val intent = Intent(this, Login::class.java)
-                finish();
-                overridePendingTransition(0, 0);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-
+                ft.replace(R.id.containerView, HomeFragment()).commit()
+                //need to perform logout functionality for firebase/All intents as well
             }
             false
         }
