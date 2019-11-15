@@ -13,6 +13,8 @@ import androidx.navigation.findNavController
 import android.widget.Toast
 import android.content.Intent
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterPage : AppCompatActivity() {
 
@@ -28,6 +30,8 @@ class RegisterPage : AppCompatActivity() {
     private var inputPassword: EditText? = null
     private var inputconfirmPassword: EditText? = null
     private var btnSignUp: Button? = null
+    private var mDatabaseReference: DatabaseReference? = null
+    private var mDatabase: FirebaseDatabase? = null
 
 
 
@@ -43,6 +47,8 @@ class RegisterPage : AppCompatActivity() {
         btnSignUp = findViewById(R.id.sign_up) as Button
 
         auth = FirebaseAuth.getInstance()
+        mDatabase = FirebaseDatabase.getInstance()
+        mDatabaseReference = mDatabase!!.reference!!.child("Users")
         //database = FirebaseDatabase.getInstance().reference
 
         btnSignUp!!.setOnClickListener(View.OnClickListener {
@@ -87,18 +93,21 @@ class RegisterPage : AppCompatActivity() {
             }
             auth!!.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, OnCompleteListener { task ->
-                    Toast.makeText(this,"Registration Successful"+task.isSuccessful,Toast.LENGTH_SHORT).show()
-
 
                     if (!task.isSuccessful){
                         Toast.makeText(this@RegisterPage,"Registration Failed",Toast.LENGTH_SHORT).show()
                         return@OnCompleteListener
                     }else{
-                        startActivity(Intent(this@RegisterPage, Login::class.java))
-                        finish()
+                        val userId = auth!!.currentUser!!.uid
+                        val currentUserDb = mDatabaseReference!!.child(userId)
+                        currentUserDb.child("firstName").setValue(firstname)
+                        currentUserDb.child("lastName").setValue(lastname)
+                        currentUserDb.child("phonenumber").setValue(lastname)
+                        Toast.makeText(this,"Registration Successful"+task.isSuccessful,Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@RegisterPage, Login::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
                     }
-
-
                 })
 
         })

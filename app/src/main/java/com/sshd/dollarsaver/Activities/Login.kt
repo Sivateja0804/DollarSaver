@@ -9,7 +9,7 @@ import com.sshd.dollarsaver.MainPage
 import com.sshd.dollarsaver.R
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
-import kotlinx.android.synthetic.main.login_page.*
+
 class Login : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
@@ -23,6 +23,7 @@ class Login : AppCompatActivity() {
         login_button.setOnClickListener {
             val username=findViewById<View>(R.id.username) as EditText
             val password=findViewById<View>(R.id.password) as EditText
+
             if (username.text.toString()!="" && password.text.toString()!="") {
                 auth.signInWithEmailAndPassword(username.text.toString(), password.text.toString())
                     .addOnCompleteListener(this) { task ->
@@ -30,6 +31,7 @@ class Login : AppCompatActivity() {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(this, "Login succesful", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this, MainPage::class.java)
+                            intent.putExtra("username",username.text.toString())
                             startActivity(intent)
                         } else {
                             // If sign in fails, display a message to the user.

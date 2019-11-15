@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -17,6 +18,10 @@ class ProfileFragment : Fragment(){
         val view: View =inflater.inflate(R.layout.profile_layout,null)
 
         val edit_password_click_me = view.findViewById(R.id.edit_password) as TextView
+        val username=activity!!.intent.getStringExtra("username")
+        val edit_username=view.findViewById(R.id.email) as EditText
+        edit_username.setText(username)
+        edit_username.isEnabled =false
         edit_password_click_me.setOnClickListener {
         val password_layout=view.findViewById(R.id.password_layout) as LinearLayout
             password_layout.visibility=View.VISIBLE
