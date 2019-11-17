@@ -75,6 +75,7 @@ class AddExpense : AppCompatActivity() {
                 return@OnClickListener
             }
             submit!!.visibility=View.VISIBLE
+            var flag=true
             mUserReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 //                    Toast.makeText(applicationContext,category_text +" -> Select category = " + snapshot.child(category_text).value.toString(), Toast.LENGTH_LONG).show()
@@ -108,7 +109,8 @@ class AddExpense : AppCompatActivity() {
                             Food!!.add(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to market_text))
                         }
 
-                    }else{
+                    }
+                    else{
                         if(category_text=="rent"){
                             Rent= mutableListOf(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
@@ -131,34 +133,40 @@ class AddExpense : AppCompatActivity() {
                             Food= mutableListOf(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to market_text))
                         }
                     }
+                    if(flag){
+                        flag=false
+                        if (Rent!=null){
+                            mUserReference.child("rent").setValue(Rent)
+                        }
+                        if (Transport != null){
+                            mUserReference.child("transport").setValue(Transport)
+                        }
+                        if (Entertainment != null){
+                            mUserReference.child("entertainment").setValue(Entertainment)
+                        }
+                        if (Stationery != null){
+                            mUserReference.child("stationery").setValue(Stationery)
+                        }
+                        if (Utilities != null){
+                            mUserReference.child("utilities").setValue(Utilities)
+                        }
+                        if (Miscellaneous != null){
+                            mUserReference.child("miscellaneous").setValue(Miscellaneous)
+                        }
+                        if (Food != null){
+                            mUserReference.child("food").setValue(Food)
+                        }
+                    }
+
                 }
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
+
         })
 
 
         submit!!.setOnClickListener(View.OnClickListener {
-           if (Rent!=null){
-               mUserReference.child("rent").setValue(Rent)
-           }
-            if (Transport != null){
-               mUserReference.child("transport").setValue(Transport)
-           }
-            if (Entertainment != null){
-                mUserReference.child("entertainment").setValue(Entertainment)
-            }
-            if (Stationery != null){
-                mUserReference.child("stationery").setValue(Stationery)
-            }
-            if (Utilities != null){
-                mUserReference.child("utilities").setValue(Utilities)
-            }
-            if (Miscellaneous != null){
-                mUserReference.child("miscellaneous").setValue(Miscellaneous)
-            }
-            if (Food != null){
-                mUserReference.child("food").setValue(Food)
-            }
+
         })
 
         //category spinner adapter
@@ -177,7 +185,6 @@ class AddExpense : AppCompatActivity() {
                 Toast.makeText(applicationContext,"category:"+category_text,Toast.LENGTH_LONG).show()
 //                Toast.makeText(applicationContext,"category = ", category_text, Toast.LENGTH_LONG).show()
             }
-
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Code to perform some action when nothing is selected

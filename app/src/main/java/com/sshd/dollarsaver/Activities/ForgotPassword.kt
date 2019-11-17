@@ -44,11 +44,9 @@ class ForgotPassword : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val message = "Email sent."
-                        Log.d("Hamza", message)
                         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                         updateUI()
                     } else {
-                        Log.w("Hamza", task.exception!!.message)
                         Toast.makeText(this, "No user found with this email.", Toast.LENGTH_SHORT).show()
                     }
                 }

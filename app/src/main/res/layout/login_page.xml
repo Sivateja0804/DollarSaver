@@ -13,6 +13,7 @@
             android:layout_height="150dp"
             android:src="@drawable/ic_attach_money_white_24dp"/>
 
+
         <EditText
             android:layout_width="330dp"
             android:layout_height="50dp"
@@ -22,6 +23,8 @@
             android:drawableLeft="@drawable/ic_person_outline_white_24dp"
             android:padding="5dp"
             android:hint="  User Name"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
             android:textColorHint="@color/colorHint"
             android:textColor="@color/colorInput"
             android:textSize="22sp"/>
