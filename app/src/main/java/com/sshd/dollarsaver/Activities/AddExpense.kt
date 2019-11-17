@@ -12,10 +12,15 @@ import com.google.firebase.database.core.utilities.Utilities
 import com.sshd.dollarsaver.*
 import com.sshd.dollarsaver.R
 import kotlinx.android.synthetic.main.add_expense.*
+import java.nio.channels.NonReadableChannelException
 import kotlin.math.E
 
 // why submit button, change visibility?
 // rename food to grocery, actual food
+
+//kotlinprojectdemo@gmail.com
+//123456
+//food, stationery - 3 each
 
 class AddExpense : AppCompatActivity() {
 
@@ -183,6 +188,14 @@ class AddExpense : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 category_text=list_of_items[position]
                 Toast.makeText(applicationContext,"category:"+category_text,Toast.LENGTH_LONG).show()
+                Rent = null
+                Transport = null
+                Entertainment = null
+                Utilities = null
+                Stationery = null
+                Miscellaneous = null
+                Food = null
+
 //                Toast.makeText(applicationContext,"category = ", category_text, Toast.LENGTH_LONG).show()
             }
 
