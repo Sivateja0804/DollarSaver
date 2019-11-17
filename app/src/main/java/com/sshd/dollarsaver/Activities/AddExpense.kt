@@ -56,7 +56,7 @@ class AddExpense : AppCompatActivity() {
             submit!!.visibility=View.VISIBLE
             mUserReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.child(category_text).value.toString() !="null"){
+                    if (snapshot.child(category_text.toLowerCase()).value.toString() !="null"){
                         if(category_text=="Rent"){
                             Rent = snapshot.child(category_text.toLowerCase()).value as MutableList<Map<String,String>>
                             Rent!!.add(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
