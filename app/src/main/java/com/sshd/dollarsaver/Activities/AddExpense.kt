@@ -34,7 +34,7 @@ class AddExpense : AppCompatActivity() {
         addExpense=findViewById(R.id.add_expense) as Button
         submit=findViewById(R.id.submit) as Button
         amount=findViewById(R.id.amount) as EditText
-        var list_of_items = arrayOf("Food", "Rent", "Transport", "Entertainment", "Stationery", "Utilities", "Miscellaneous")
+        var list_of_items = arrayOf("food", "rent", "transport", "entertainment", "stationery", "utilities", "miscellaneous")
         val spinner = findViewById<Spinner>(R.id.spinner)
         val market_spinner=findViewById<Spinner>(R.id.market_spinner)
         mDatabase = FirebaseDatabase.getInstance()
@@ -56,9 +56,9 @@ class AddExpense : AppCompatActivity() {
             submit!!.visibility=View.VISIBLE
             mUserReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.child(category_text.toLowerCase()).value.toString() !="null"){
-                        if(category_text=="Rent"){
-                            Rent = snapshot.child(category_text.toLowerCase()).value as MutableList<Map<String,String>>
+                    if (snapshot.child(category_text).value.toString() !="null"){
+                        if(category_text=="rent"){
+                            Rent = snapshot.child(category_text).value as MutableList<Map<String,String>>
                             Rent!!.add(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
                     }else{
