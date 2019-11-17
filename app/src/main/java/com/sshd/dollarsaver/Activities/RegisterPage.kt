@@ -12,15 +12,27 @@ import android.view.View
 import androidx.navigation.findNavController
 import android.widget.Toast
 import android.content.Intent
+import android.renderscript.Sampler
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.IgnoreExtraProperties
+
+@IgnoreExtraProperties
+data class Categories(
+    var Food: String? = "",
+    var Rent: String? = "",
+    var Transport: String? = "",
+    var Entertainment: String? = "",
+    var Stationery: String? = "",
+    var Utilities: String? = "",
+    var Miscellaneous: String? = ""
+)
 
 class RegisterPage : AppCompatActivity() {
 
     private var auth : FirebaseAuth?= null
     //private lateinit var database: DatabaseReference
-
 
 
     private var inputFirstName: EditText? = null
@@ -51,9 +63,6 @@ class RegisterPage : AppCompatActivity() {
         mDatabaseReference = mDatabase!!.reference!!.child("Users")
         //database = FirebaseDatabase.getInstance().reference
 
-        btnSignUp!!.setOnClickListener(View.OnClickListener {
-            finish()
-        })
 
         btnSignUp!!.setOnClickListener(View.OnClickListener {
             val firstname = inputFirstName!!.text.toString().trim()
@@ -100,9 +109,10 @@ class RegisterPage : AppCompatActivity() {
                     }else{
                         val userId = auth!!.currentUser!!.uid
                         val currentUserDb = mDatabaseReference!!.child(userId)
+                        currentUserDb.setValue(Categories("","","","","",""))
                         currentUserDb.child("firstName").setValue(firstname)
                         currentUserDb.child("lastName").setValue(lastname)
-                        currentUserDb.child("phonenumber").setValue(lastname)
+                        currentUserDb.child("mobilenumber").setValue(phonenumber)
                         Toast.makeText(this,"Registration Successful"+task.isSuccessful,Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@RegisterPage, Login::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
