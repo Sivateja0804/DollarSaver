@@ -20,6 +20,7 @@ class Login : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         //login button listner
         val login_button = findViewById<View>(R.id.login)
+        val forgot_password = findViewById<View>(R.id.forgot_password)
         login_button.setOnClickListener {
             val username=findViewById<View>(R.id.username) as EditText
             val password=findViewById<View>(R.id.password) as EditText
@@ -48,6 +49,11 @@ class Login : AppCompatActivity() {
         val register_button = findViewById<View>(R.id.register)
         register_button.setOnClickListener {
             val intent = Intent(this, RegisterPage::class.java)
+            startActivity(intent)
+        }
+
+        forgot_password.setOnClickListener {
+            val intent = Intent(this, ForgotPassword::class.java)
             startActivity(intent)
         }
     }

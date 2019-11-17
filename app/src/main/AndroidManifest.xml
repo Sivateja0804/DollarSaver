@@ -18,6 +18,7 @@
         <activity android:name=".Activities.RegisterPage"/>
         <activity android:name=".MainPage"/>
         <activity android:name=".Activities.AddExpense"/>
+        <activity android:name=".Activities.ForgotPassword"/>
     </application>
 
 </manifest>
