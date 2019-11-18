@@ -12,6 +12,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.sshd.dollarsaver.Activities.Login
 
 
@@ -21,7 +23,6 @@ class MainPage : AppCompatActivity() {
     lateinit var mFragmentManager: FragmentManager
     lateinit var mFragmentTransaction: FragmentTransaction
     lateinit var mNavigationView: NavigationView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +38,7 @@ class MainPage : AppCompatActivity() {
         mNavigationView.setNavigationItemSelectedListener {
                 menuItem ->  mDrawerLayout.closeDrawers()
             if (menuItem.itemId==R.id.nav_item_home){
+
                 val ft= mFragmentManager.beginTransaction()
                 ft.replace(R.id.containerView, TabFragment()).commit()
             }
