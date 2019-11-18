@@ -1,5 +1,6 @@
 package com.sshd.dollarsaver.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -174,7 +175,9 @@ class AddExpense : AppCompatActivity() {
 
 
         submit!!.setOnClickListener(View.OnClickListener {
-
+            setContentView(R.layout.home_page)
+            val intent = Intent(applicationContext, MainPage::class.java)
+            startActivity(intent)
         })
 
         //category spinner adapter
@@ -225,6 +228,7 @@ class AddExpense : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Code to perform some action when nothing is selected
+
             }
         }
     }
