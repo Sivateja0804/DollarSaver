@@ -1,6 +1,5 @@
 package com.sshd.dollarsaver.Activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -22,9 +21,6 @@ import kotlin.math.E
 //kotlinprojectdemo@gmail.com
 //123456
 //food, stationery - 3 each
-
-// after add expense - text boxes null
-
 
 class AddExpense : AppCompatActivity() {
 
@@ -89,56 +85,56 @@ class AddExpense : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
 //                    Toast.makeText(applicationContext,category_text +" -> Select category = " + snapshot.child(category_text).value.toString(), Toast.LENGTH_LONG).show()
                     if (snapshot.child(category_text).value.toString() !=""){
-                        if(category_text=="rent"){
+                        if(category_text=="rent" && flag){
                             Rent = snapshot.child(category_text).value as MutableList<Map<String,String>>
-                            Rent!!.add(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                            Rent!!.add(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="transport"){
+                        if(category_text=="transport" && flag){
                             Transport = snapshot.child(category_text).value as MutableList<Map<String,String>>
-                            Transport!!.add(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                            Transport!!.add(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="entertainment"){
+                        if(category_text=="entertainment" && flag){
                             Entertainment = snapshot.child(category_text).value as MutableList<Map<String,String>>
-                            Entertainment!!.add(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                            Entertainment!!.add(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="stationery"){
+                        if(category_text=="stationery" && flag){
                             Stationery = snapshot.child(category_text).value as MutableList<Map<String,String>>
-                            Stationery!!.add(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                            Stationery!!.add(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="utilities"){
+                        if(category_text=="utilities" && flag){
                             Utilities = snapshot.child(category_text).value as MutableList<Map<String,String>>
-                            Utilities!!.add(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                            Utilities!!.add(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="miscellaneous"){
+                        if(category_text=="miscellaneous" && flag){
                             Miscellaneous = snapshot.child(category_text).value as MutableList<Map<String,String>>
-                            Miscellaneous!!.add(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                            Miscellaneous!!.add(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="food"){
+                        if(category_text=="food" && flag){
                             Food = snapshot.child(category_text).value as MutableList<Map<String,String>>
                             Food!!.add(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to market_text))
                         }
 
                     }
                     else{
-                        if(category_text=="rent"){
-                            Rent= mutableListOf(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                        if(category_text=="rent" && flag){
+                            Rent= mutableListOf(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="transport"){
-                            Transport= mutableListOf(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                        if(category_text=="transport" && flag){
+                            Transport= mutableListOf(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="entertainment"){
-                            Entertainment= mutableListOf(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                        if(category_text=="entertainment" && flag){
+                            Entertainment= mutableListOf(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="stationery"){
-                            Stationery= mutableListOf(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                        if(category_text=="stationery" && flag){
+                            Stationery= mutableListOf(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="utilities"){
-                            Utilities= mutableListOf(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                        if(category_text=="utilities" && flag){
+                            Utilities= mutableListOf(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="miscellaneous"){
-                            Miscellaneous= mutableListOf(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to ""))
+                        if(category_text=="miscellaneous" && flag){
+                            Miscellaneous= mutableListOf(mapOf("ItemName" to "","Quantity" to "","Amount" to (amount!!.text.toString()),"Market" to ""))
                         }
-                        if(category_text=="food"){
+                        if(category_text=="food" && flag){
                             Food= mutableListOf(mapOf("ItemName" to (item_name!!.text.toString()),"Quantity" to (quantity!!.text.toString()),"Amount" to (amount!!.text.toString()),"Market" to market_text))
                         }
                     }
@@ -146,38 +142,47 @@ class AddExpense : AppCompatActivity() {
                         flag=false
                         if (Rent!=null){
                             mUserReference.child("rent").setValue(Rent)
+                            Rent = null
                         }
                         if (Transport != null){
                             mUserReference.child("transport").setValue(Transport)
+                            Transport = null
                         }
                         if (Entertainment != null){
                             mUserReference.child("entertainment").setValue(Entertainment)
+                            Entertainment = null
                         }
                         if (Stationery != null){
                             mUserReference.child("stationery").setValue(Stationery)
+                            Utilities = null
                         }
                         if (Utilities != null){
                             mUserReference.child("utilities").setValue(Utilities)
+                            Stationery = null
                         }
                         if (Miscellaneous != null){
                             mUserReference.child("miscellaneous").setValue(Miscellaneous)
+                            Miscellaneous = null
                         }
                         if (Food != null){
                             mUserReference.child("food").setValue(Food)
+                            Food = null
                         }
                     }
 
                 }
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
+            amount!!.setText("")
+            quantity!!.setText("")
+            item_name!!.setText("")
+
 
         })
 
 
         submit!!.setOnClickListener(View.OnClickListener {
-            setContentView(R.layout.home_page)
-            val intent = Intent(applicationContext, MainPage::class.java)
-            startActivity(intent)
+
         })
 
         //category spinner adapter
@@ -194,13 +199,6 @@ class AddExpense : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 category_text=list_of_items[position]
                 Toast.makeText(applicationContext,"category:"+category_text,Toast.LENGTH_LONG).show()
-                Rent = null
-                Transport = null
-                Entertainment = null
-                Utilities = null
-                Stationery = null
-                Miscellaneous = null
-                Food = null
 
 //                Toast.makeText(applicationContext,"category = ", category_text, Toast.LENGTH_LONG).show()
             }
@@ -228,7 +226,6 @@ class AddExpense : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Code to perform some action when nothing is selected
-
             }
         }
     }
