@@ -46,7 +46,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/table"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,7 +57,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
                 android:id="@+id/market1"
-                android:text=""
+                android:text="Costco"
                 android:textColorHint="@color/colorHint"
                 android:textColor="@color/colorInput"
                 android:textSize="30sp"
@@ -69,7 +70,7 @@
                 android:id="@+id/market1_box"
                 android:background="@drawable/textbox_back"
                 android:padding="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="100dp"
                 android:textColorHint="@color/colorHint"
                 android:textColor="@color/colorInput"
                 android:textSize="22sp"/>
@@ -83,7 +84,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
                 android:id="@+id/market2"
-                android:text="Costco"
+                android:text="Whole Foods"
                 android:textColorHint="@color/colorHint"
                 android:textColor="@color/colorInput"
                 android:textSize="30sp"
@@ -96,7 +97,7 @@
                 android:id="@+id/market2_box"
                 android:background="@drawable/textbox_back"
                 android:padding="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="100dp"
                 android:textColorHint="@color/colorHint"
                 android:textColor="@color/colorInput"
                 android:textSize="22sp"/>
@@ -123,7 +124,7 @@
                 android:id="@+id/market3_box"
                 android:background="@drawable/textbox_back"
                 android:padding="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="100dp"
                 android:textColorHint="@color/colorHint"
                 android:textColor="@color/colorInput"
                 android:textSize="22sp"/>
@@ -150,7 +151,7 @@
                 android:id="@+id/market4_box"
                 android:background="@drawable/textbox_back"
                 android:padding="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="100dp"
                 android:textColorHint="@color/colorHint"
                 android:textColor="@color/colorInput"
                 android:textSize="22sp"/>
@@ -177,7 +178,7 @@
                 android:id="@+id/market5_box"
                 android:background="@drawable/textbox_back"
                 android:padding="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="100dp"
                 android:textColorHint="@color/colorHint"
                 android:textColor="@color/colorInput"
                 android:textSize="22sp"/>
@@ -204,7 +205,7 @@
                 android:id="@+id/market6_box"
                 android:background="@drawable/textbox_back"
                 android:padding="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="100dp"
                 android:textColorHint="@color/colorHint"
                 android:textColor="@color/colorInput"
                 android:textSize="22sp"/>

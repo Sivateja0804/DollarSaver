@@ -42,46 +42,89 @@ class DashboardFragment : Fragment(){
         mAuth = FirebaseAuth.getInstance()
         val mUser = mAuth!!.currentUser
         val mUserReference = mDatabaseReference!!.child(mUser!!.uid)
+        var food_amount =0
+        var rent_amount =0
+        var transport_amount =0
+        var entertainment_amount =0
+        var stationery_amount =0
+        var utilities_amount =0
+        var miscellaneous_amount =0
 
         mUserReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                Food=snapshot.child("food").value as MutableList<Map<String,String>>
-                Rent=snapshot.child("rent").value as MutableList<Map<String,String>>
-                Transport=snapshot.child("transport").value as MutableList<Map<String,String>>
-                Entertainment=snapshot.child("entertainment").value as MutableList<Map<String,String>>
-                Stationery=snapshot.child("stationery").value as MutableList<Map<String,String>>
-                Utilities=snapshot.child("utilities").value as MutableList<Map<String,String>>
-                Miscellaneous=snapshot.child("miscellaneous").value as MutableList<Map<String,String>>
+                try {
+                    Food = snapshot.child("food").value as MutableList<Map<String, String>>
+                    Food!!.forEach {
+                        food_amount=food_amount+it["Amount"]!!.toInt()
+                    }
+                }catch (e: Exception){
+                    food_amount=0
+                }
+
+                try {
+                    Rent=snapshot.child("rent").value as MutableList<Map<String,String>>
+                    Rent!!.forEach {
+                        rent_amount=rent_amount+it["Amount"]!!.toInt()
+                    }
+                }catch (e: Exception){
+                    rent_amount=0
+                }
+
+                try {
+                    Transport=snapshot.child("transport").value as MutableList<Map<String,String>>
+                    Transport!!.forEach {
+                        transport_amount=transport_amount+it["Amount"]!!.toInt()
+                    }
+                }catch (e: Exception){
+                    transport_amount=0
+                }
+
+                try {
+                    Entertainment=snapshot.child("entertainment").value as MutableList<Map<String,String>>
+                    Entertainment!!.forEach {
+                        entertainment_amount=entertainment_amount+it["Amount"]!!.toInt()
+                    }
+                }catch (e: Exception){
+                    entertainment_amount=0
+                }
+
+                try {
+                    Stationery=snapshot.child("stationery").value as MutableList<Map<String,String>>
+                    Stationery!!.forEach {
+                        stationery_amount=stationery_amount+it["Amount"]!!.toInt()
+                    }
+                }catch (e: Exception){
+                    stationery_amount=0
+                }
+
+                try {
+                    Utilities=snapshot.child("utilities").value as MutableList<Map<String,String>>
+                    Utilities!!.forEach {
+                        utilities_amount=utilities_amount+it["Amount"]!!.toInt()
+                    }
+                }catch (e: Exception){
+                    utilities_amount=0
+                }
+
+                try {
+                    Miscellaneous=snapshot.child("miscellaneous").value as MutableList<Map<String,String>>
+                    Miscellaneous!!.forEach {
+                        miscellaneous_amount=miscellaneous_amount+it["Amount"]!!.toInt()
+                    }
+                }catch (e: Exception){
+                    rent_amount=0
+                }
+
                 val pieChartView = view.findViewById<View>(R.id.chart) as PieChartView
                 val  pieData = arrayListOf<SliceValue>()
-                var food_amount =0
-                var rent_amount =0
-                var transport_amount =0
-                var entertainment_amount =0
-                var stationery_amount =0
-                var utilities_amount =0
-                var miscellaneous_amount =0
-                Food!!.forEach {
-                    food_amount=food_amount+it["Amount"]!!.toInt()
-                }
-                Rent!!.forEach {
-                    rent_amount=rent_amount+it["Amount"]!!.toInt()
-                }
-                Transport!!.forEach {
-                    transport_amount=transport_amount+it["Amount"]!!.toInt()
-                }
-                Entertainment!!.forEach {
-                    entertainment_amount=entertainment_amount+it["Amount"]!!.toInt()
-                }
-                Stationery!!.forEach {
-                    stationery_amount=stationery_amount+it["Amount"]!!.toInt()
-                }
-                Utilities!!.forEach {
-                    utilities_amount=utilities_amount+it["Amount"]!!.toInt()
-                }
-                Miscellaneous!!.forEach {
-                    miscellaneous_amount=miscellaneous_amount+it["Amount"]!!.toInt()
-                }
+
+
+
+
+
+
+
+
 
                 var total_amount=food_amount+rent_amount+transport_amount+entertainment_amount+stationery_amount+utilities_amount+miscellaneous_amount
                 pieData.add(SliceValue((food_amount.toFloat()/total_amount.toFloat())*100, Color.BLUE).setLabel("Food: $"+food_amount))
