@@ -69,6 +69,12 @@ class SuggestionsFragment : Fragment(){
         }
 
         submit!!.setOnClickListener(View.OnClickListener {
+            market_box1.setText("")
+            market_box2.setText("")
+            market_box3.setText("")
+            market_box4.setText("")
+            market_box5.setText("")
+            market_box6.setText("")
             mDatabase = FirebaseDatabase.getInstance()
             mDatabaseReference = mDatabase!!.reference!!.child("Users")
             mAuth = FirebaseAuth.getInstance()
@@ -130,6 +136,7 @@ class SuggestionsFragment : Fragment(){
 
                     var layout=view.findViewById<LinearLayout>(R.id.table)
                     layout.visibility=View.VISIBLE
+
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
                     Log.d("hamza","afbkbfajbdf")

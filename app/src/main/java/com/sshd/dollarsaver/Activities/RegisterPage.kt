@@ -26,7 +26,8 @@ data class Categories(
     var Entertainment: String? = "",
     var Stationery: String? = "",
     var Utilities: String? = "",
-    var Miscellaneous: String? = ""
+    var Miscellaneous: String? = "",
+    var Budget: String? = "1000"
 )
 
 class RegisterPage : AppCompatActivity() {
@@ -109,7 +110,7 @@ class RegisterPage : AppCompatActivity() {
                     }else{
                         val userId = auth!!.currentUser!!.uid
                         val currentUserDb = mDatabaseReference!!.child(userId)
-                        currentUserDb.setValue(Categories("","","","","",""))
+                        currentUserDb.setValue(Categories("","","","","","","","1000"))
                         currentUserDb.child("firstName").setValue(firstname)
                         currentUserDb.child("lastName").setValue(lastname)
                         currentUserDb.child("mobilenumber").setValue(phonenumber)

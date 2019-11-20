@@ -42,16 +42,17 @@ class DashboardFragment : Fragment(){
         mAuth = FirebaseAuth.getInstance()
         val mUser = mAuth!!.currentUser
         val mUserReference = mDatabaseReference!!.child(mUser!!.uid)
-        var food_amount =0
-        var rent_amount =0
-        var transport_amount =0
-        var entertainment_amount =0
-        var stationery_amount =0
-        var utilities_amount =0
-        var miscellaneous_amount =0
+
 
         mUserReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                var food_amount =0
+                var rent_amount =0
+                var transport_amount =0
+                var entertainment_amount =0
+                var stationery_amount =0
+                var utilities_amount =0
+                var miscellaneous_amount =0
                 try {
                     Food = snapshot.child("food").value as MutableList<Map<String, String>>
                     Food!!.forEach {
@@ -112,7 +113,7 @@ class DashboardFragment : Fragment(){
                         miscellaneous_amount=miscellaneous_amount+it["Amount"]!!.toInt()
                     }
                 }catch (e: Exception){
-                    rent_amount=0
+                    miscellaneous_amount=0
                 }
 
                 val pieChartView = view.findViewById<View>(R.id.chart) as PieChartView
@@ -127,13 +128,28 @@ class DashboardFragment : Fragment(){
 
 
                 var total_amount=food_amount+rent_amount+transport_amount+entertainment_amount+stationery_amount+utilities_amount+miscellaneous_amount
-                pieData.add(SliceValue((food_amount.toFloat()/total_amount.toFloat())*100, Color.BLUE).setLabel("Food: $"+food_amount))
-                pieData.add(SliceValue((rent_amount.toFloat()/total_amount.toFloat())*100, Color.RED).setLabel("Rent: $"+rent_amount))
-                pieData.add(SliceValue((transport_amount.toFloat()/total_amount.toFloat())*100, Color.GRAY).setLabel("Transport: $"+transport_amount))
-                pieData.add(SliceValue((entertainment_amount.toFloat()/total_amount.toFloat())*100, Color.MAGENTA).setLabel("Entertainment: $"+entertainment_amount))
-                pieData.add(SliceValue((stationery_amount.toFloat()/total_amount.toFloat())*100, Color.CYAN).setLabel("Stationery: $"+stationery_amount))
-                pieData.add(SliceValue((utilities_amount.toFloat()/total_amount.toFloat())*100, Color.GREEN).setLabel("Utilities: $"+utilities_amount))
-                pieData.add(SliceValue((miscellaneous_amount.toFloat()/total_amount.toFloat())*100, Color.DKGRAY).setLabel("Miscellaneous: $"+miscellaneous_amount))
+                if(food_amount!=0){
+                    pieData.add(SliceValue((food_amount.toFloat()/total_amount.toFloat())*100, Color.BLUE).setLabel("Food: $"+food_amount))
+                    }
+                if (rent_amount!=0){
+                    pieData.add(SliceValue((rent_amount.toFloat()/total_amount.toFloat())*100, Color.RED).setLabel("Rent: $"+rent_amount))
+                }
+                if(transport_amount!=0){
+                    pieData.add(SliceValue((transport_amount.toFloat()/total_amount.toFloat())*100, Color.GRAY).setLabel("Transport: $"+transport_amount))
+                }
+                if(entertainment_amount!=0){
+                    pieData.add(SliceValue((entertainment_amount.toFloat()/total_amount.toFloat())*100, Color.MAGENTA).setLabel("Entertainment: $"+entertainment_amount))
+                }
+                if(stationery_amount!=0){
+                    pieData.add(SliceValue((stationery_amount.toFloat()/total_amount.toFloat())*100, Color.CYAN).setLabel("Stationery: $"+stationery_amount))
+                }
+                if(utilities_amount!=0){
+                    pieData.add(SliceValue((utilities_amount.toFloat()/total_amount.toFloat())*100, Color.GREEN).setLabel("Utilities: $"+utilities_amount))
+                }
+                if(miscellaneous_amount!=0){
+                    pieData.add(SliceValue((miscellaneous_amount.toFloat()/total_amount.toFloat())*100, Color.DKGRAY).setLabel("Miscellaneous: $"+miscellaneous_amount))
+                }
+
                 val pieChartData = PieChartData(pieData)
                 pieChartData.setHasLabels(true).setValueLabelTextSize(14)
                 pieChartView.setPieChartData(pieChartData)
