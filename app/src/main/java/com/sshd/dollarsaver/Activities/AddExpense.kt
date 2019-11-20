@@ -1,5 +1,6 @@
 package com.sshd.dollarsaver.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -190,7 +191,8 @@ class AddExpense : AppCompatActivity() {
 
 
         submit!!.setOnClickListener(View.OnClickListener {
-
+            val intent = Intent(this, MainPage::class.java)
+            startActivity(intent)
         })
 
         //category spinner adapter
