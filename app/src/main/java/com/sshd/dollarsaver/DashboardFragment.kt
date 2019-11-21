@@ -59,7 +59,6 @@ class DashboardFragment : Fragment(){
                     }
                 }catch (e: Exception){
                     food_amount=0
-                    Log.d("exception","Ignore exception")
                 }
 
                 try {
@@ -69,7 +68,6 @@ class DashboardFragment : Fragment(){
                     }
                 }catch (e: Exception){
                     rent_amount=0
-                    Log.d("exception","Ignore exception")
                 }
 
                 try {
@@ -78,9 +76,7 @@ class DashboardFragment : Fragment(){
                         transport_amount=transport_amount+it["Amount"]!!.toInt()
                     }
                 }catch (e: Exception){
-
                     transport_amount=0
-                    Log.d("exception","Ignore exception")
                 }
 
                 try {
@@ -90,7 +86,6 @@ class DashboardFragment : Fragment(){
                     }
                 }catch (e: Exception){
                     entertainment_amount=0
-                    Log.d("exception","Ignore exception")
                 }
 
                 try {
@@ -100,7 +95,6 @@ class DashboardFragment : Fragment(){
                     }
                 }catch (e: Exception){
                     stationery_amount=0
-                    Log.d("exception","Ignore exception")
                 }
 
                 try {
@@ -110,7 +104,6 @@ class DashboardFragment : Fragment(){
                     }
                 }catch (e: Exception){
                     utilities_amount=0
-                    Log.d("exception","Ignore exception")
                 }
 
                 try {
@@ -119,8 +112,7 @@ class DashboardFragment : Fragment(){
                         miscellaneous_amount=miscellaneous_amount+it["Amount"]!!.toInt()
                     }
                 }catch (e: Exception){
-                    miscellaneous_amount=0
-                    Log.d("exception","Ignore exception")
+                    rent_amount=0
                 }
 
                 val pieChartView = view.findViewById<View>(R.id.chart) as PieChartView
@@ -147,7 +139,7 @@ class DashboardFragment : Fragment(){
                 pieChartView.setPieChartData(pieChartData)
             }
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.d("exception","Ignore exception")
+                Log.d("hamza","afbkbfajbdf")
             }
         })
 
