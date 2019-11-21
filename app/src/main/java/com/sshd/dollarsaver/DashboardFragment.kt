@@ -119,7 +119,7 @@ class DashboardFragment : Fragment(){
                     }
                 }catch (e: Exception){
                     rent_amount=0
-                    Log.d("exception","Ignore Exception")
+                    Log.d("exception","IgnoreException")
                 }
 
                 val pieChartView = view.findViewById<View>(R.id.chart) as PieChartView
