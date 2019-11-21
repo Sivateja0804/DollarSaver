@@ -85,7 +85,7 @@ class AddExpense : AppCompatActivity() {
             mUserReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 //                    Toast.makeText(applicationContext,category_text +" -> Select category = " + snapshot.child(category_text).value.toString(), Toast.LENGTH_LONG).show()
-                    Log.d("hamza",snapshot.child(category_text).value.toString())
+                    //Log.d("",snapshot.child(category_text).value.toString())
                     if (snapshot.child(category_text).value.toString() !="" && snapshot.child(category_text).value.toString() !="null" ){
                         if(category_text=="rent" && flag){
                             Rent = snapshot.child(category_text).value as MutableList<Map<String,String>>

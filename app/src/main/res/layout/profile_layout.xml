@@ -27,6 +27,7 @@
             android:id="@+id/email"
             android:background="@drawable/textbox_back"
             android:padding="5dp"
+            android:singleLine="true"
             android:layout_marginLeft="55dp"
             android:textColorHint="@color/colorHint"
             android:textColor="@color/colorInput"
